@@ -1,3 +1,5 @@
+[arXiv]XXX  |  [Paper] XXX
+
 # DeepStruc
 Welcome to DeepStruc
 
@@ -12,14 +14,10 @@ The __README.md__ file consist of the following sections:
         2. [Stacking faulted structures](#stacking-faulted-structures)
     2. [Train model](#train-model)
     3. [Predict](#predict)
-3. [Baseline models](#baseline-models)
-    1. [Bruteforce model](#bruteforce-model)
-    2. [Metal Finder](#metal-finder)
-    3. [Conditional Variational Autoencoder] (#conditional-variational-autoencoder)
-4. [Author](#author)
-5. [Cite](#cite)
-6. [References](#references)
-7. [License](#license)
+3. [Author](#author)
+4. [Cite](#cite)
+5. [References](#references)
+6. [License](#license)
 
 # Getting started
 
@@ -36,11 +34,6 @@ The __README.md__ file consist of the following sections:
 
 ## Predict
 
-# Baseline models
-## Bruteforce modelling
-## Metal Finder 
-## Conditional Variational Autoencoder
-
 ## Authors
 * __Andy S. Anker__, Ph.D. student in Nanoscience at the University of Copenhagen   
 * __Emil T. S. Kjær__, Ph.D. student in Nanoscience at the University of Copenhagen   
@@ -50,6 +43,23 @@ Should there be any question, desired improvement or bugs please contact us on G
 through by email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
 # Cite
+```
+@article{anker2020characterising,
+  title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
+  author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+  year={2020}
+}
+```
+
+### Acknowledgments
+Our code is developed based on the the following publications:
+```
+@article{anker2020characterising,
+  title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
+  author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+  year={2020}
+}
+```
 
 ## License
-This project is licensed under the XXX License - see the [LICENSE.txt](LICENSE.txt) file for details.
+This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md) file for details.
