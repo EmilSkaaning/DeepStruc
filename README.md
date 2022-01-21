@@ -1,7 +1,7 @@
 [arXiv]XXX  |  [Paper] XXX
 
 # DeepStruc
-Welcome to DeepStruc that is a Deep Generative Model (DGM) which learns the relation between PDF and atomic structure, which enables it to solve a structure based on a PDF!
+Welcome to DeepStruc that is a Deep Generative Model (DGM) which learns the relation between PDF and atomic structure and thereby solve a structure based on a PDF!
 
 We here apply DeepStruc for the structural analysis of a model system of monometallic nanoparticles (MMNPs) with seven different structure types and demonstrate the method for both simulated and experimental PDFs. DeepStruc can reconstruct simulated data with an average mean absolute error (MAE) of the atom xyz-coordinates on 0.093 ± 0.058 Å after fitting a contraction/extraction factor, an ADP and a scale parameter.
 We demonstrate the generative capability of DeepStruc on a dataset of face-centered cubic (fcc), hexagonal closed packed (hcp) and stacking faulted structures, where DeepStruc can recognize the stacking faulted structures as an interpolation between fcc and hcp and construct new structural models based on a PDF. The MAE is in this example 0.030 ± 0.019 Å.
