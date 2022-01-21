@@ -54,9 +54,9 @@ year={2022}}
 Our code is developed based on the the following publications:
 ```
 @article{anker2020characterising,
-  title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
-  author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
-  year={2020}}
+title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
+author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+year={2020}}
 ```
 
 # License
