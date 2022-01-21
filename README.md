@@ -52,7 +52,7 @@ year={2022}}
 ```
 
 # Acknowledgments
-Our code is developed based on the the following publications:
+Our code is developed based on the the following publication:
 ```
 @article{anker2020characterising,
 title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
