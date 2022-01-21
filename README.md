@@ -40,7 +40,7 @@ The __README.md__ file consist of the following sections:
 * Supervisor __Kirsten M. Ø. Jensen__, associate professor at the University of Copenhagen.  
  
 Should there be any question, desired improvement or bugs please contact us on GitHub or 
-through by email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
+through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
 ## Cite
 ```
