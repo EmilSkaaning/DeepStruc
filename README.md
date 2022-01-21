@@ -26,15 +26,15 @@ The __README.md__ file consist of the following sections:
 
 ## Simulate data
 
-### Seven cluster types structures
+#### Seven cluster types structures
 
-### Stacking faulted structures
+#### Stacking faulted structures
 
 ## Train model
 
 ## Predict
 
-## Authors
+# Authors
 * __Andy S. Anker__, Ph.D. student in Nanoscience at the University of Copenhagen   
 * __Emil T. S. Kjær__, Ph.D. student in Nanoscience at the University of Copenhagen   
 * Supervisor __Kirsten M. Ø. Jensen__, associate professor at the University of Copenhagen.  
@@ -42,7 +42,7 @@ The __README.md__ file consist of the following sections:
 Should there be any question, desired improvement or bugs please contact us on GitHub or 
 through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
-## Cite
+# Cite
 ```
 @article{anker2020characterising,
   title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
@@ -51,7 +51,7 @@ through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 }
 ```
 
-### Acknowledgments
+# Acknowledgments
 Our code is developed based on the the following publications:
 ```
 @article{anker2020characterising,
@@ -61,5 +61,5 @@ Our code is developed based on the the following publications:
 }
 ```
 
-## License
+# License
 This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md) file for details.
