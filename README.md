@@ -15,7 +15,7 @@ The __README.md__ file consist of the following sections:
 3. [Baseline models](#baseline-models)
     1. [Bruteforce model](#bruteforce-model)
     2. [Metal Finder](#metal-finder)
-    3. [Conditional Variational Autoencoder] (#CVAE)
+    3. [Conditional Variational Autoencoder] (#conditional-variational-autoencoder)
 4. [Author](#author)
 5. [Cite](#cite)
 6. [References](#references)
@@ -38,8 +38,8 @@ The __README.md__ file consist of the following sections:
 
 # Baseline models
 ## Bruteforce modelling
-
 ## Metal Finder 
+## Conditional Variational Autoencoder
 
 ## Authors
 * __Andy S. Anker__, Ph.D. student in Nanoscience at the University of Copenhagen   
