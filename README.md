@@ -16,7 +16,7 @@ The __README.md__ file consist of the following sections:
     3. [Predict](#predict)
 3. [Author](#author)
 4. [Cite](#cite)
-5. [References](#references)
+5. [Acknowledgments](#Acknowledgments)
 6. [License](#license)
 
 # Getting started
@@ -42,7 +42,7 @@ The __README.md__ file consist of the following sections:
 Should there be any question, desired improvement or bugs please contact us on GitHub or 
 through by email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
-# Cite
+## Cite
 ```
 @article{anker2020characterising,
   title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
