@@ -15,6 +15,7 @@ The __README.md__ file consist of the following sections:
 3. [Baseline models](#baseline-models)
     1. [Bruteforce model](#bruteforce-model)
     2. [Metal Finder](#metal-finder)
+    3. [Conditional Variational Autoencoder] (#CVAE)
 4. [Author](#author)
 5. [Cite](#cite)
 6. [References](#references)
