@@ -44,11 +44,10 @@ through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
 # Cite
 ```
-@article{anker2020characterising,
-  title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
-  author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
-  year={2020}
-}
+@article{kjær2022DeepStruc,
+title={DeepStruc: Towards structure solution from pair distribution function data using deep generative models},
+author={Emil T. S. Kjær, Andy S. Anker, Marcus N. Weng1, Simon J. L. Billinge, Raghavendra Selvan, Kirsten M. Ø. Jensen},
+year={2022}}
 ```
 
 # Acknowledgments
@@ -57,8 +56,7 @@ Our code is developed based on the the following publications:
 @article{anker2020characterising,
   title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
   author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
-  year={2020}
-}
+  year={2020}}
 ```
 
 # License
