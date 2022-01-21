@@ -43,6 +43,7 @@ Should there be any question, desired improvement or bugs please contact us on G
 through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
 # Cite
+If you use our code or our results, please consider citing our paper. Thanks in advance!
 ```
 @article{kjær2022DeepStruc,
 title={DeepStruc: Towards structure solution from pair distribution function data using deep generative models},
