@@ -9,7 +9,7 @@ We demonstrate the generative capability of DeepStruc on a dataset of face-cente
 The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare the DeepStruc with a similar DGM without the graph-based encoder. DeepStruc is able to reconstruct the structures using a smaller dimension of the latent space thus having a better generative capabillity. We also compared DeepStruc with a brute-force modelling approach and a tree-based classification algorithm. The ML models are significantly faster than the brute-force approach, but DeepStruc can furthermore create a latent space from where synthetic structures can be sampled which the tree-based method cannot!
 The baseline models can be found in other repositories: XXX.  YYY.  ZZZ   
 
-![alt text](DeepStruc.png "DeepStruc")
+![alt text](img/DeepStruc.png "DeepStruc")
 
 ## Introduction
 
