@@ -22,10 +22,11 @@ The __README.md__ file consist of the following sections:
         2. [Stacking faulted structures](#stacking-faulted-structures)
     2. [Train model](#train-model)
     3. [Predict](#predict)
-3. [Author](#author)
-4. [Cite](#cite)
-5. [Acknowledgments](#Acknowledgments)
-6. [License](#license)
+3. [Using DeepStruc on own data](#using-deepstruc-on-own-data)
+4. [Author](#author)
+5. [Cite](#cite)
+6. [Acknowledgments](#Acknowledgments)
+7. [License](#license)
 
 # Getting started
 
@@ -41,6 +42,11 @@ The __README.md__ file consist of the following sections:
 ## Train model
 
 ## Predict
+
+# Using DeepStruc on own data
+Using our trained DeepStruc model on our own PDFs is straightforward and does not require anything installed or downloaded to your computer.
+Follow the instructions at: 
+https://colab.research.google.com/drive/18oLE4qNo3K7DW7T0OAO1t6SYYeuRg6Sq#scrollTo=Zuj3jyFl_S66
 
 # Authors
 * __Andy S. Anker__, Ph.D. student in Nanoscience at the University of Copenhagen   
