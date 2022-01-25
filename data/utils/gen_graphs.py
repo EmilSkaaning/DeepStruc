@@ -1,4 +1,4 @@
-import os
+import os,yaml
 from diffpy.Structure import loadStructure, Lattice
 import numpy as np
 from diffpy.srreal.pdfcalculator import DebyePDFCalculator
@@ -7,20 +7,23 @@ from tqdm import tqdm
 import h5py
 
 class graph_maker_xyz_nn():
-    def __init__(self, path, save_dir):
+    def __init__(self, path, save_dir, pdf_dict):
         self.stru_dir = path
         self.save_dir = save_dir
         self.strus = sorted(os.listdir(path))
         print('Number of structures:', len(self.strus))
 
-        # Set parameters
+        print('PDF simulation parameters:')
+        for key in pdf_dict.keys():
+            print(f'{key} = {pdf_dict[key]:.2f}')
 
-        self.qmin = 0.7
-        self.qmax = 25
-        self.rmin = 0
-        self.rmax = 30
-        self.rstep = 0.01
-        self.biso = 0.3
+        # Set parameters
+        self.qmin = pdf_dict['qmin']
+        self.qmax = pdf_dict['qmax']
+        self.rmin = pdf_dict['rmin']
+        self.rmax = pdf_dict['rmax']
+        self.rstep = pdf_dict['rstep']
+        self.biso = pdf_dict['biso']
 
     def setup_calculator(self):
         dbc = DebyePDFCalculator()
@@ -124,33 +127,16 @@ def calc_dist(position_0, position_1):
     return np.sqrt((position_0[0] - position_1[0]) ** 2 + (position_0[1] - position_1[1]) ** 2 + (
             position_0[2] - position_1[2]) ** 2)
 
-def gen_graphs(data_base):
+def gen_graphs(data_base, pdf_dict):
     try:
         os.makedirs(f'{data_base}/graphs')
     except FileExistsError:
         pass
-    obj = graph_maker_xyz_nn(f'{data_base}/xyz_unique', f'{data_base}/graphs')
+
+    with open(f'{data_base}/PDF_simulation_parameters.yaml', 'w') as outfile:
+        yaml.dump(pdf_dict, outfile, allow_unicode=True, default_flow_style=False)
+
+    obj = graph_maker_xyz_nn(f'{data_base}/xyz_unique', f'{data_base}/graphs', pdf_dict)
     obj.gen_graphs()
 
-
-if __name__ == '__main__':
-    """dis_dir = ['/home/ekjaer/Projects/db/strus/xyz_db_raw_atoms_200_interpolate_001/all',
-               #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_removed_dub/xyz_db_raw_atoms_100_interpolate_010/all',
-               #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_removed_dub/xyz_db_raw_atoms_200_interpolate_001/all',
-               #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_removed_dub/xyz_db_raw_atoms_200_interpolate_010/all',
-               ]
-
-    save_dir = ['/home/ekjaer/Projects/db/xyz_db_raw_atoms_200_interpolate_001',
-                #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_db_raw_graphs/node_xyz_edge_to_nn_dist/all_types_atoms_100_interpolate_010',
-                #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_db_raw_graphs/node_xyz_edge_to_nn_dist/all_types_atoms_200_interpolate_001',
-                #'/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_db_raw_graphs/node_xyz_edge_to_nn_dist/all_types_atoms_200_interpolate_010'
-                ]"""
-
-    dis_dir = ['/mnt/d/mahcine_learning/Mono_metals_db/xyz_removed_dub/xyz_db_raw_atoms_200_interpolate_001/all']
-    save_dir = ['/mnt/d/mahcine_learning/Mono_metals_db/xyz_db_raw_atoms_200_interpolate_001/xyz_db_raw_atoms_200_interpolate_001_03Biso']
-
-    obj = graph_maker_xyz_nn(dis_dir[0], save_dir[0])
-    #obj.best_buds = 8
-
-    obj.gen_graphs()
 

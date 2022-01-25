@@ -51,11 +51,11 @@ def find_geometry(structure_type):
 	if structure_type==3:
 		Geometry = "HCP"
 	if structure_type==4:
-		Geometry = "Icosahedron"
+		Geometry = "Ico"
 	if structure_type==5:
-		Geometry = "Decahedron"
+		Geometry = "Dec"
 	if structure_type==6:
-		Geometry = "Octahedron"
+		Geometry = "Oct"
 	return Geometry
 
 def find_structure_type(Geometry):
@@ -67,11 +67,11 @@ def find_structure_type(Geometry):
 		structure_type = 2
 	if Geometry=="HCP":
 		structure_type = 3
-	if Geometry=="Icosahedron":
+	if Geometry=="Ico":
 		structure_type = 4
-	if Geometry=="Decahedron":
+	if Geometry=="Dec":
 		structure_type = 5
-	if Geometry=="Octahedron":
+	if Geometry=="Oct":
 		structure_type = 6
 	return structure_type
 
@@ -89,13 +89,13 @@ def structure_maker(Geometry):
 	if Geometry=="HCP": 
 		stru = HexagonalClosedPacked(symbol=atom, latticeconstant=(lc1, lc2), size=(size1, size2, size3))
 		structure_type = 3
-	if Geometry=="Icosahedron": 
+	if Geometry=="Ico":
 		stru = Icosahedron(atom, shell, latticeconstant=2*np.sqrt(0.5*lc**2))
 		structure_type = 4
-	if Geometry=="Decahedron": 
+	if Geometry=="Dec":
 		stru = Decahedron(atom, p, q, r, latticeconstant=2*np.sqrt(0.5*lc**2))
 		structure_type = 5
-	if Geometry=="Octahedron": 
+	if Geometry=="Oct":
 		stru = Octahedron(atom, length, latticeconstant=2*np.sqrt(0.5*lc**2))
 		structure_type = 6
 	return stru, structure_type
@@ -107,11 +107,11 @@ def make_data(atoms, path, numberatoms, Geometry, minimum_atoms=0, numberOfBondL
 		make_data_SC_FCC_BCC(path, numberatoms, Geometry, minimum_atoms, numberOfBondLengths)
 	if Geometry=="HCP":
 		make_data_HCP(path, numberatoms, Geometry, minimum_atoms, numberOfBondLengths)
-	if Geometry=="Icosahedron":
+	if Geometry=="Ico":
 		make_data_Icosahedron(path, numberatoms, Geometry, minimum_atoms, numberOfBondLengths)
-	if Geometry=="Decahedron":
+	if Geometry=="Dec":
 		make_data_Decahedron(path, numberatoms, Geometry, minimum_atoms, numberOfBondLengths)
-	if Geometry=="Octahedron":
+	if Geometry=="Oct":
 		make_data_Octahedron(path, numberatoms, Geometry, minimum_atoms, numberOfBondLengths)
 	return None
 
@@ -357,9 +357,9 @@ def new_structure_checker(Input_array, list_search):
 
 #type_list = ["SC", "FCC", "BCC"]
 #type_list = ["HCP"]
-#type_list = ["Icosahedron", "Decahedron", "Octahedron"]
+#type_list = ["Ico", "Dec"", "Oct"]
 
-"""type_list = ["SC", "FCC", "BCC", "HCP", "Icosahedron", "Decahedron", "Octahedron"]
+"""type_list = ["SC", "FCC", "BCC", "HCP", "Ico", "Dec"", "Oct"]
 
 max_atoms = 200
 interpolate = 1
@@ -369,9 +369,11 @@ directory = './test_xyz'"""
 
 
 
-def gen_xyz(atoms, type_list, max_atoms=100, interpolate=1, directory=None):
-	if directory==None:
+def gen_xyz(atoms, type_list, max_atoms, interpolate, directory_base):
+	if directory_base==None:
 		directory_base = "strus_atoms_{:03d}_interpolate_{:03d}/".format(max_atoms, interpolate)
+	elif directory_base[-1] != '/':
+		directory_base = f'{directory_base}/'
 
 	directory = f"{directory_base}xyz_raw/"
 	try:
