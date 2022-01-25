@@ -20,9 +20,11 @@ class graph_maker_xyz_nn():
         # Set parameters
         self.qmin = pdf_dict['qmin']
         self.qmax = pdf_dict['qmax']
+        self.qdamp = pdf_dict['qdamp']
         self.rmin = pdf_dict['rmin']
         self.rmax = pdf_dict['rmax']
         self.rstep = pdf_dict['rstep']
+        self.delta2 = pdf_dict['delta2']
         self.biso = pdf_dict['biso']
 
     def setup_calculator(self):
@@ -32,6 +34,8 @@ class graph_maker_xyz_nn():
         dbc.rmin = self.rmin
         dbc.rmax = self.rmax
         dbc.rstep = self.rstep
+        dbc.delta2 = self.delta2
+        dbc.qdamp = self.qdamp
 
         return dbc
 

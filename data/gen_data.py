@@ -13,9 +13,11 @@ def main(args=None):
     pdf_dict = {
         'qmin': args.qmin,
         'qmax': args.qmax,
+        'qdamp': args.qdamp,
         'rmin': args.rmin,
         'rmax': args.rmax,
         'rstep': args.rstep,
+        'delta2': args.delta2,
         'biso': args.biso
     }
     print('\nCreating graphs of monometallic nanoparticles!')
@@ -26,7 +28,7 @@ Generating structures, graphs and conditional PDFs
 for DeepStruc.
 """
 
-parser = argparse.ArgumentParser(description=_BANNER, formatter_class=argparse.RawTextHelpFormatter)
+parser = argparse.ArgumentParser(description=_BANNER, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 # Generel directory to save data.
 parser.add_argument("-d", "--directory", default=None, type=str,
@@ -62,17 +64,23 @@ parser.add_argument("-q", "--qmin", default=0.7, type=float,
 parser.add_argument("-Q", "--qmax", default=25., type=float,
                     help="Largest scattering amplitude, float")
 
+parser.add_argument("-p", "--qdamp", default=0.04, type=float,
+                    help="PDF Gaussian dampening factor due to limited Q-resolution. Not applied when equal to zero.")
+
 parser.add_argument("-r", "--rmin", default=2., type=float,
                     help="Smallest grid value, float")
 
 parser.add_argument("-R", "--rmax", default=30., type=float,
                     help="Largest grid value, float")
 
-parser.add_argument("-rs", "--rstep", default=0.01, type=float,
+parser.add_argument("-s", "--rstep", default=0.01, type=float,
                     help="Grid step size, float")
 
+parser.add_argument("-e", "--delta2", default=2., type=float,
+                    help="Coefficient for (1/r**2) contribution to the peak sharpening.")
+
 parser.add_argument("-b", "--biso", default=0.3, type=float,
-                    help="isotropic Atomic Displacement Parameter (ADP), float")
+                    help="Isotropic Atomic Displacement Parameter (ADP), float")
 
 if __name__ == '__main__':
     args = parser.parse_args()
