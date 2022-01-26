@@ -67,7 +67,7 @@ parser.add_argument("-Q", "--qmax", default=25., type=float,
 parser.add_argument("-p", "--qdamp", default=0.04, type=float,
                     help="PDF Gaussian dampening factor due to limited Q-resolution. Not applied when equal to zero.")
 
-parser.add_argument("-r", "--rmin", default=2., type=float,
+parser.add_argument("-r", "--rmin", default=0., type=float,
                     help="Smallest grid value, float")
 
 parser.add_argument("-R", "--rmax", default=30., type=float,

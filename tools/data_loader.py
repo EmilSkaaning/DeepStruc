@@ -13,7 +13,6 @@ torch.manual_seed(seed)
 np.random.seed(seed)
 random.seed(seed)
 
-
 class graph_loader(pl.LightningDataModule):
     def __init__(self, data_dir, cluster_size=None, num_files=None, batchsize=1, shuffle=True, num_workers=0):
         super(graph_loader, self).__init__()
