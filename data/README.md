@@ -33,16 +33,16 @@ List of possible arguments.
 | `-h` or `--help` | Prints help message. |    
 | `-d` or `--directory` | Prints help message. __str__ | `-d new_data`  |   
 | `-a` or `--atoms` | An atom or list of atoms. __str__| `-a Nb W Mo`  |
-| `-t` or `--structure_type` | A single or list of structure types. Possible structure types are: SC, FCC, BCC, HCP, Ico, Dec and Oct __str__| `-t SC Ico`  |  
+| `-t` or `--structure_type` | A single or list of structure types. Possible structure types are: SC, FCC, BCC, HCP, Ico, Dec and Oct. __str__| `-t SC Ico`  |  
 | `-n` or `--num_atoms` | Maximum number of possible atoms in structures generated. __int__| `-n 200`  |  
 | `-i` or `--interpolation` | Prints help message. __int__| `-i 3`  |  
 | `-q` or `--qmin` | Smallest scattering amplitude for simulated PDFs. __float__| `-q 0.2`  |  
 | `-Q` or `--qmax` | Largest scattering amplitude for simulated PDFs. __float__| `-Q 22.3`  |  
-| `-p` or `--qdamp` | PDF Gaussian dampening factor due to limited Q-resolution. Not applied when equal to zero.. __float__| `-p 22.3`  |  
+| `-p` or `--qdamp` | PDF Gaussian dampening factor due to limited Q-resolution. Not applied when equal to zero. __float__| `-p 0.02`  |  
 | `-r` or `--rmin` | Smallest r-value for simulated PDFs. __float__| `-r 1.5`  |  
 | `-R` or `--rmax` | Largest r-value for simulated PDFs. __float__| `-R 20.0`  |  
 | `-s` or `--rstep` | r-grid spacing for simulated PDFs. __float__| `-s 0.1`  |  
-| `-e` or `--delta2` | Coefficient for (1/r**2) contribution to the peak sharpening.. __float__| `-e 3.5`  |  
+| `-e` or `--delta2` | Coefficient for (1/r**2) contribution to the peak sharpening. __float__| `-e 3.5`  |  
 | `-b` or `--biso` | Isotropic Atomic Displacement Parameter for simulated PDFs. __float__| `-b 0.2`  |  
 
   

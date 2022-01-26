@@ -1,21 +1,18 @@
-import yaml, sys, os
+import yaml, sys, os, argparse
 import torch, random
 import numpy as np
 import pytorch_lightning as pl
 from tkinter import Tk     # from tkinter import Tk for Python 3.x
 from tkinter.filedialog import askopenfilename
-import matplotlib.lines as mlines
-import matplotlib.pyplot as plt
-from plotting_funcs import select_files, get_latent_space
-import pandas as pd
+"""
 Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
 filename = askopenfilename()
 path, model_name = filename.split('/models', 1)
 epochs = model_name.split('epoch=')
 max_epochs = int(epochs[1][:-5]) + 1
-sys.path.append(path)
-from data_loader import graph_loader, save_xyz_file
-from module import Net
+sys.path.append(path)"""
+from tools.data_loader import graph_loader, save_xyz_file
+from tools.module import Net
 
 seed = 37
 torch.manual_seed(seed)
@@ -62,8 +59,43 @@ def make_prediction_dirs(path, names):
             os.mkdir(f'{path}/real_data/{name[:-3]}')
     return None
 
+# Inputs parameters.
+# model
+# num samples
+# sigma
+# plot
+
+_BANNER = """
+Predict data
+"""
+
+parser = argparse.ArgumentParser(description=_BANNER, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+parser.add_argument("-d", "--data", default='./data/experimental_PDFs', type=str,
+                    help="Path to data or data directory. If pointing to data directory all datasets must have same format.")
+
+parser.add_argument("-m", "--model", default='./models/DeepStruc/model-vld_rec_pdf=0.01222-beta=0.004-vld_kld=6.17422-epoch=0000013845.ckpt', type=str,
+                    help="Path to model. If 'None' GUI will open.")
+
+parser.add_argument("-n", "--num_samples", default=5, type=int,
+                    help="Number of samples/structures generated.")
+
+parser.add_argument("-s", "--sigma", default=1, type=float,
+                    help="Multiplier of the normaldistributions sigma.")
+
+parser.add_argument("-p", "--plot_sampling", default=1, type=bool,
+                    help="Plots sampled structures ontop of DeepStruc training data. Models must be DeepStruc")
 
 if __name__=='__main__':
+    args = parser.parse_args()
+
+    model = Net().load_from_checkpoint(args.model)
+
+    trainer = pl.Trainer(resume_from_checkpoint=args.model)
+
+
+
+    sys.exit()
     print(f'Model chosen: {path}')
     print(f'Imported file directory: {model_name}')
     data_dir = 'D:/Work/PhD/Articles/CVAE_paper/real_data_predictions/data'

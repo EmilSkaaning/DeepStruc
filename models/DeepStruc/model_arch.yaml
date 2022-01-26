@@ -1,0 +1,29 @@
+PDF_len: 3000
+decoder:
+  d0: 32
+  d1: 64
+  d2: 128
+  d3: 256
+  d4: 512
+  d5: 1024
+  out_dim: 200
+encoder:
+  e0: 1024
+  e1: 512
+  e2: 256
+  e3: 128
+  e4: 64
+latent_space: 2
+mlps:
+  m0: 256
+  m1: 128
+  m2: 64
+node_features: 3
+posterior:
+  prior_0: 384
+  prior_1: 192
+  prior_2: 24
+prior:
+  prior_0: 384
+  prior_1: 192
+  prior_2: 24
