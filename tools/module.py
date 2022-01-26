@@ -3,7 +3,6 @@ import torch, sys, random
 import torch.nn.functional as F
 import torch.nn
 from torch_geometric.nn import GCNConv, GATConv, GatedGraphConv, GraphConv, SAGEConv, GCN2Conv, EdgeConv, AGNNConv, DNAConv
-from torch_geometric.utils import dropout_adj
 import pytorch_lightning as pl
 from collections import OrderedDict
 from torch_geometric.nn.glob import global_add_pool, GlobalAttention
@@ -19,13 +18,11 @@ np.random.seed(seed)
 random.seed(seed)
 
 class Net(pl.LightningModule):
-    def __init__(self, input_vals, model_arch, lr=1e-4, dropout_p=0.2, beta=0, beta_inc=0.001, beta_max=1, rec_th=0.0001):
+    def __init__(self, model_arch, lr=1e-4, beta=0, beta_inc=0.001, beta_max=1, rec_th=0.0001):
         super(Net, self).__init__()
-        init_data = input_vals[0]
         self.actFunc = nn.LeakyReLU()
         self.actFunc_ReLU = nn.ReLU()
-        self.dropout_mlp = nn.Dropout(p=dropout_p)
-        self.cluster_size = model_arch['decoder']['out_dim']
+        self.cluster_size = int(model_arch['decoder']['out_dim'])
         self.latent_space = model_arch['latent_space']
         self.beta = beta  # starting val
         self.beta_inc = beta_inc  # beta increase
@@ -33,15 +30,15 @@ class Net(pl.LightningModule):
         self.last_beta_update = 0
         self.beta_max = beta_max
         self.lr = lr
-        self.dropout_p = dropout_p
-        self.num_node_features = input_vals[0].num_node_features
-        self.encoder_layers = self.Encoder(init_data, model_arch['encoder'], model_arch['mlps']['m0'])
-        self.decoder_layers = self.Decoder(init_data, model_arch['decoder'], model_arch['latent_space'])
+        self.num_node_features = model_arch['node_features']
+        self.encoder_layers = self.Encoder(model_arch['node_features'], model_arch['encoder'], model_arch['mlps']['m0'])
+        self.decoder_layers = self.Decoder(model_arch['node_features'], model_arch['decoder'], model_arch['latent_space'])
         self.mlp_layers = self.MLPs(model_arch['mlps'], model_arch['latent_space'])
 
-        self.prior_layers = self.conditioning_nw(input_vals[1], model_arch['prior'], self.latent_space * 2)
-        self.posterior_layers = self.conditioning_nw(input_vals[1], model_arch['posterior'], model_arch['mlps']['m0'])  # Posterior
+        self.prior_layers = self.conditioning_nw(model_arch['PDF_len'], model_arch['prior'], self.latent_space * 2)
+        self.posterior_layers = self.conditioning_nw(model_arch['PDF_len'], model_arch['posterior'], model_arch['mlps']['m0'])  # Posterior
         self.glob_at = GlobalAttention(torch.nn.Linear(model_arch['mlps']['m0'], 1), torch.nn.Linear(model_arch['mlps']['m0'], model_arch['mlps']['m0']))
+
 
     def MLPs(self, model_arch, latent_dim):
         layers = OrderedDict()
@@ -65,7 +62,7 @@ class Net(pl.LightningModule):
 
         for idx, key in enumerate(model_arch.keys()):
             if idx == 0:
-                layers[str(key)] = GATConv(init_data.num_node_features, model_arch[key])
+                layers[str(key)] = GATConv(init_data, model_arch[key])
             else:
                 layers[str(key)] = GATConv(former_nhid, model_arch[key])
 
@@ -91,7 +88,7 @@ class Net(pl.LightningModule):
             former_nhid = model_arch[key]
 
 
-        layers[str('d{}'.format(idx+1))] = nn.Linear(former_nhid, model_arch['out_dim']*init_data.num_node_features)
+        layers[str('d{}'.format(idx+1))] = nn.Linear(former_nhid, model_arch['out_dim']*init_data)
 
         return nn.Sequential(layers)
 
@@ -101,7 +98,7 @@ class Net(pl.LightningModule):
         ### Assumes 1xself.atomRangex1 one hot encoding vector as input
         ### Output: 1x2*latent_dimx1
         """conditioning_layers = nn.Sequential(
-            GatedConv1d(np.shape(pdf)[0], 48, kernel_size=1, stride=1), nn.ReLU(),
+            GatedConv1d(pdf, 48, kernel_size=1, stride=1), nn.ReLU(),
             GatedConv1d(48, 24, kernel_size=1, stride=1), nn.ReLU(),
             GatedConv1d(24, out, kernel_size=1, stride=1))"""
 
@@ -109,7 +106,7 @@ class Net(pl.LightningModule):
         conditioning_layers = torch.nn.Sequential()
         for idx, key in enumerate(model_arch.keys()):
             if idx == 0:
-                conditioning_layers.add_module(str(key), GatedConv1d(np.shape(pdf)[0], model_arch[key], kernel_size=1, stride=1))
+                conditioning_layers.add_module(str(key), GatedConv1d(pdf, model_arch[key], kernel_size=1, stride=1))
             else:
                 conditioning_layers.add_module(str(key), GatedConv1d(former_nhid, model_arch[key], kernel_size=1, stride=1))
 
@@ -119,7 +116,7 @@ class Net(pl.LightningModule):
         return conditioning_layers
 
 
-    def forward(self, data, mode='posterior'):
+    def forward(self, data, mode='posterior', sigma_scale=1):
         """
 
         Parameters
@@ -131,7 +128,7 @@ class Net(pl.LightningModule):
         -------
 
         """
-
+        self.sigma_scale = sigma_scale
         if mode == 'posterior':
             pdf_cond = data[1].to(self.device)
             data = data[0].to(self.device)
@@ -221,10 +218,7 @@ class Net(pl.LightningModule):
             if idx == len(self.encoder_layers) - 1:
                 z = layer(z, data.edge_index)
             else:
-                if self.dropout_p > 0.0:
-                    edge_index, _ = dropout_adj(data.edge_index, p=self.dropout_p)
-                else:
-                    edge_index = data.edge_index
+                edge_index = data.edge_index
 
                 z = self.actFunc(layer(z, edge_index))
         test = z.clone()
@@ -241,8 +235,6 @@ class Net(pl.LightningModule):
                 z = layer(z)
             else:
                 z = self.actFunc(layer(z))
-                if self.dropout_p > 0.0:
-                    z = self.dropout_mlp(z)
 
         # Draw from distribution
         posterior = self.get_distribution(z)
@@ -252,7 +244,7 @@ class Net(pl.LightningModule):
     def get_distribution(self, z):
         mu, log_var = torch.chunk(z, 2, dim=-1)
         log_var = nn.functional.softplus(log_var)  # Sigma can't be negative
-        sigma = torch.exp(log_var / 2)
+        sigma = torch.exp(log_var / 2) * self.sigma_scale
 
         distribution = Independent(Normal(loc=mu, scale=sigma), 2)
         return distribution
@@ -261,9 +253,9 @@ class Net(pl.LightningModule):
     def training_step(self, batch, batch_nb):
         prediction, _, kl = self.forward(batch)
 
-        #loss = weighted_mse_loss(prediction, batch[0]['y'], self.device, node_weight=5)
+        loss = weighted_mse_loss(prediction, batch[0]['y'], self.device)
 
-        loss = F.mse_loss(prediction, batch[0]['y'])
+        #loss = F.mse_loss(prediction, batch[0]['y'])
         log_loss = loss#torch.log(loss)
 
         tot_loss = log_loss + (self.beta * kl)
