@@ -22,7 +22,7 @@ class Net(pl.LightningModule):
         super(Net, self).__init__()
         self.actFunc = nn.LeakyReLU()
         self.actFunc_ReLU = nn.ReLU()
-        self.cluster_size = model_arch['decoder']['out_dim']
+        self.cluster_size = int(model_arch['decoder']['out_dim'])
         self.latent_space = model_arch['latent_space']
         self.beta = beta  # starting val
         self.beta_inc = beta_inc  # beta increase
@@ -38,9 +38,6 @@ class Net(pl.LightningModule):
         self.prior_layers = self.conditioning_nw(model_arch['PDF_len'], model_arch['prior'], self.latent_space * 2)
         self.posterior_layers = self.conditioning_nw(model_arch['PDF_len'], model_arch['posterior'], model_arch['mlps']['m0'])  # Posterior
         self.glob_at = GlobalAttention(torch.nn.Linear(model_arch['mlps']['m0'], 1), torch.nn.Linear(model_arch['mlps']['m0'], model_arch['mlps']['m0']))
-
-    def predict_step(self, batch, batch_idx, dataloader_idx=0):
-        return self(batch)
 
 
     def MLPs(self, model_arch, latent_dim):
@@ -119,7 +116,7 @@ class Net(pl.LightningModule):
         return conditioning_layers
 
 
-    def forward(self, data, mode='posterior'):
+    def forward(self, data, mode='posterior', sigma_scale=1):
         """
 
         Parameters
@@ -131,7 +128,7 @@ class Net(pl.LightningModule):
         -------
 
         """
-
+        self.sigma_scale = sigma_scale
         if mode == 'posterior':
             pdf_cond = data[1].to(self.device)
             data = data[0].to(self.device)
@@ -247,7 +244,7 @@ class Net(pl.LightningModule):
     def get_distribution(self, z):
         mu, log_var = torch.chunk(z, 2, dim=-1)
         log_var = nn.functional.softplus(log_var)  # Sigma can't be negative
-        sigma = torch.exp(log_var / 2)
+        sigma = torch.exp(log_var / 2) * self.sigma_scale
 
         distribution = Independent(Normal(loc=mu, scale=sigma), 2)
         return distribution

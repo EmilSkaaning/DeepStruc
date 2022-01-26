@@ -51,6 +51,17 @@ List of possible arguments or run the '--help' argument for additional informati
 | `-L` or `--latent_dim` | Number of latent space dimensions. __int__| `-L 3`  |  
 
 ## Predict
+List of possible arguments or run the '--help' argument for additional information.  
+ 
+| Arg | Description | Example |  
+| --- | --- |  --- |  
+| `-h` or `--help` | Prints help message. |    
+| `-d` or `--data` | Path to data or data directory. If pointing to data directory all datasets must have same format. __str__| `-d data/experimental_PDFs/JQ_S1.gr`  |  
+| `-m` or `--model` | Path to model. If 'None' GUI will open. __str__ | `-m ./models/DeepStruc`  |   
+| `-n` or `--num_samples` | Number of samples/structures generated for each unique PDF. __int__| `-n 10`  |
+| `-s` or `--sigma` | Multiplier of the normaldistributions sigma. __float__| `-s 7`  |  
+| `-p` or `--plot_sampling` | "Plots sampled structures ontop of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
+
 
 ## Simulate data
 See the __data__ folder. 
