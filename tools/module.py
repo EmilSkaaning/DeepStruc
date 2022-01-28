@@ -185,7 +185,7 @@ class Net(pl.LightningModule):
 
         z_sample = z_sample.view(this_batch_size, self.cluster_size, self.num_node_features)  # Output
 
-        return z_sample, z, kl#.mean()
+        return z_sample, z, kl, self.mu, self.sigma#.mean()
 
 
     def get_prior_dist(self, pdf_cond):
@@ -245,13 +245,14 @@ class Net(pl.LightningModule):
         mu, log_var = torch.chunk(z, 2, dim=-1)
         log_var = nn.functional.softplus(log_var)  # Sigma can't be negative
         sigma = torch.exp(log_var / 2) * self.sigma_scale
-
+        self.sigma = sigma
+        self.mu = mu
         distribution = Independent(Normal(loc=mu, scale=sigma), 2)
         return distribution
 
 
     def training_step(self, batch, batch_nb):
-        prediction, _, kl = self.forward(batch)
+        prediction, _, kl, _, _ = self.forward(batch)
 
         loss = weighted_mse_loss(prediction, batch[0]['y'], self.device)
 
@@ -269,8 +270,8 @@ class Net(pl.LightningModule):
 
 
     def validation_step(self, batch, batch_nb):
-        prediction, _, kl = self.forward(batch)
-        prediction_pdf, _, _ = self.forward(batch[1], mode='prior')
+        prediction, _, kl, _, _ = self.forward(batch)
+        prediction_pdf, _, _, _, _ = self.forward(batch[1], mode='prior')
 
         #loss = weighted_mse_loss(prediction, batch[0]['y'], self.device, node_weight=5)
         #loss_pdf = weighted_mse_loss(prediction_pdf, batch[0]['y'], self.device, node_weight=5)
@@ -298,8 +299,8 @@ class Net(pl.LightningModule):
 
 
     def test_step(self, batch, batch_nb):
-        prediction, _, kl = self.forward(batch)
-        prediction_pdf, _, _ = self.forward(batch[1], mode='prior')
+        prediction, _, kl, _, _ = self.forward(batch)
+        prediction_pdf, _, _, _, _ = self.forward(batch[1], mode='prior')
 
         #loss = weighted_mse_loss(prediction, batch[0]['y'], self.device, node_weight=5)
         #loss_pdf = weighted_mse_loss(prediction_pdf, batch[0]['y'], self.device, node_weight=5)
