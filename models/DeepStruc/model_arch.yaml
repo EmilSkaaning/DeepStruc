@@ -19,6 +19,10 @@ mlps:
   m1: 128
   m2: 64
 node_features: 3
+norm_vals:
+  x: 25.92
+  y: 25.92
+  z: 50.2637
 posterior:
   prior_0: 384
   prior_1: 192

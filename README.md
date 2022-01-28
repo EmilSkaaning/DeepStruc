@@ -43,7 +43,7 @@ List of possible arguments or run the '--help' argument for additional informati
 | `-e` or `--epochs` | Number of maximum epochs. __int__| `-e 100`  |  
 | `-b` or `--batch_size` | Number of graphs in each batch. __int__| `-b 20`  |  
 | `-l` or `--learning_rate` | Learning rate. __float__| `-l 1e-4`  |  
-| `-B` or `--Beta` | Initial beta value for scaling KLD. __float__| `-B 0.1`  |  
+| `-B` or `--beta` | Initial beta value for scaling KLD. __float__| `-B 0.1`  |  
 | `-i` or `--beta_increase` | "Increments of beta when the threshold is met. __float__| `-i 0.1`  |  
 | `-x` or `--beta_max` | Highst value beta can increase to. __float__| `-x 5`  |  
 | `-t` or `--reconstruction_th` | Reconstruction threshold required before beta is increased. __float__| `-t 0.001`  |  
@@ -62,6 +62,7 @@ List of possible arguments or run the '--help' argument for additional informati
 | `-n` or `--num_samples` | Number of samples/structures generated for each unique PDF. __int__| `-n 10`  |
 | `-s` or `--sigma` | Multiplier of the normaldistributions sigma. __float__| `-s 7`  |  
 | `-p` or `--plot_sampling` | "Plots sampled structures ontop of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
+| `-g` or `--save_path` | "Path to directory where predictions will be saved. __bool__| `-g ./best_preds`  |  
 
 
 ## Simulate data
