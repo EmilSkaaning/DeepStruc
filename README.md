@@ -62,7 +62,7 @@ List of possible arguments or run the '--help' argument for additional informati
 | `-n` or `--num_samples` | Number of samples/structures generated for each unique PDF. __int__| `-n 10`  |
 | `-s` or `--sigma` | Multiplier of the normaldistributions sigma. __float__| `-s 7`  |  
 | `-p` or `--plot_sampling` | "Plots sampled structures ontop of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
-| `-p` or `--plot_sampling` | "Plots sampled structures ontop of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
+| `-g` or `--save_path` | "Path to directory where predictions will be saved. __bool__| `-g ./best_preds`  |  
 
 
 ## Simulate data
