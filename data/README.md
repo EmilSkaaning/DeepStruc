@@ -1,15 +1,18 @@
+[arXiv]XXX  |  [Paper] XXX
+
 # Data introduction
 This folder contains __graphs__-, __utils__ folder and a gen_data.py script.  
 The __graphs__ folder contains a small set of graph which can be used to varify that DeepStruc is running. To
-generate a broader distribution of monometallic nanoparticles (MMNPs) for training, validation and testing the gen_data.py 
+generate a broader distribution of Mono-Metallic Nanoparticles (MMNPs) for training, validation and testing the gen_data.py 
 script is needed.
   
 
 1. [Generate data](#generate-data)
     1. [Generate data arguments](#generate-data-arguments)
 2. [Generel data structure](#generel-data-structure)
-    1. [Monometallic nanoparticles](#monometallic-nanoparticles)
-    2. [Graphs and PDFs](#graphs-and-pdfs)
+    1. [Mono-Metallic Nanoparticles (MMNPs)](#mono-metallic-nanoparticles-mmnps)
+    2. [Graph representation](#graph-representation)
+    3. [Pair Distribution Function (PDF)](#pair-distribution-function-pdf)
 
 # Generate data
 To generate more data run the gen_data.py script. The scripts takes a range of arguments which are all descriped below
@@ -47,9 +50,25 @@ List of possible arguments.
 
   
 # Generel data structure
+For detailed description of the data format please revisit the paper.
 
-## Monometallic nanoparticles
+## Mono-Metallic Nanoparticles (MMNPs)
+The MMNPs are described using a XYZ format describing the element and their euclidian distances as seen below:
 
-## Graphs and PDFs
+#Atoms <br> <br>
+Atom1 &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
+Atom2 &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
+AtomN &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
+
+## Graph representation
+Each structure in graph representation can be described as, G = (X,A), where X ∈ RN×F is the node feature matrix which contains F features that can describe each of the N atoms in the structure. We use F = 3 comprising only the Euclidean coordinates of the atom in a 3-dimensional space. The interatomic relationships are captured using the adjacency matrix A ∈ RN×N. In our case, the entries of the adjacency matrix are the Euclidean distance between pairs of atoms resulting in a soft adjacency matrix. However, when the distance between any pair of nodes is larger than the lattice constant the corresponding edge weight is set to zero. 
+
+The following figure shows a decahedron consisting of seven atoms alongside the components describing it in our chosen graph representation!
 ![alt text](../img/graph_rep.png "Graphs representation of MMNPs.")
  
+## Pair Distribution Function (PDF)
+The PDF is the Fourier transform of total scattering data, which can be obtained through x-ray, neutron or electron scattering.
+G(r) can be interpreted as a histogram of real-space interatomic distances and the information is equivalent to that of an unassigned distance matrix. <br> 
+A simulated PDF and how we normalise them are shown below:
+![alt text](../img/PDF.png "Simulated PDF")
+
