@@ -63,7 +63,7 @@ If you are intersted in changing the architecture of the model go to __train.py_
 | `-L` or `--latent_dim` | Number of latent space dimensions. __int__| `-L 3`  |  
 
 ## Predict
-To use a DeepStruc or your own model run:
+To predict a MMNP using DeepStruc or your own model on a PDF:
 ```
 python predict.py
 ```
