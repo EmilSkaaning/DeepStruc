@@ -1,8 +1,8 @@
 [arXiv]XXX  |  [Paper] XXX
 
 # DeepStruc
-Welcome to DeepStruc, the Deep Generative Model (DGM) which learns the relation between PDF and atomic structure and 
-thereby solve a structure based on a PDF!
+Welcome to DeepStruc, the Deep Generative Model (DGM) a learns the relation between PDF and atomic structure and 
+thereby solve a structure based from a PDF!
 
 1. [DeepStruc](#deepstruc)
 2. [Getting started (with Colab)](#getting-started-with-colab)
