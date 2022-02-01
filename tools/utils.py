@@ -43,27 +43,29 @@ def get_data(args):  # Todo: write your own dataloader.
             data = data.T
             x_list.append(data[0])
             y_list.append(data[1])
+            Gr_ph = data[1]
+            if round(data[0][1] - data[0][0],2) != 0.01:
+                raise ValueError("The PDF does not have an r-step of 0.01 Å")
+            try:
+                start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
+            except:
+                Gr_ph = np.concatenate((np.zeros((int((data[0][0])/0.01))), Gr_ph))
+                print("The PDFs first value is above 2 Å. We have added 0's down to 2 Å as a quick fix.")
+            try:
+                end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
+            except:
+                Gr_ph = np.concatenate((Gr_ph, np.zeros((3000-len(Gr_ph)))))
+                print("The PDFs last value is before 30 Å. We have added 0's up to 30 Å as a quick fix.")
+            Gr_ph = Gr_ph[200:3000]
             for i in range(samples):
-                if round(data[0][1] - data[0][0],2) != 0.01:
-                    raise ValueError("The PDF does not have an r-step of 0.01 Å")
-                try:
-                    start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
-                except:
-                    raise IndexError("The PDFs first value is above 2 Å. You can try adding 0's down to 2 Å as a quick fix.")
-                if np.amax(data[0]) <= 30.:
-                   end_PDF = len(data[0])
-                else:
-                    try:
-                        end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
-                    except:
-                        raise IndexError("The PDFs last value is before 30 Å. You can try adding 0's up to 30 Å as a quick fix.")
-                new_data = data[1][start_PDF:end_PDF]
-                np_data[idxx] = new_data
+                np_data[idxx] = Gr_ph
                 
                 np_data[idxx] /= np.amax(np_data[idxx])
                 idxx += 1
                 name_list.append(file)
             break
+
+
 
     np_data = np_data.reshape((len(files)*samples, 2800, 1))
     np_data = torch.tensor(np_data, dtype=torch.float)
