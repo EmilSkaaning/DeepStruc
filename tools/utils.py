@@ -51,7 +51,7 @@ def get_data(args):  # Todo: write your own dataloader.
                 except:
                     raise IndexError("The PDFs first value is above 2 Å. You can try adding 0's down to 2 Å as a quick fix.")
                 if np.amax(data[0]) <= 30.:
-                    end_PDF = -1
+                   end_PDF = len(data[0])
                 else:
                     try:
                         end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
