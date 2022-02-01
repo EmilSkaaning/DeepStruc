@@ -62,7 +62,7 @@ Atom<sub>2</sub> &nbsp; &nbsp; x<sub>2</sub> &nbsp; &nbsp; y<sub>2</sub> &nbsp; 
 Atom<sub>N</sub> &nbsp; &nbsp; x<sub>N</sub> &nbsp; &nbsp; y<sub>N</sub> &nbsp; &nbsp; z<sub>N</sub> <br>
 
 ## Graph representation
-Each structure in graph representation can be described as, G = (X,A), where X ∈ RN×F is the node feature matrix which contains F features that can describe each of the N atoms in the structure. We use F = 3 comprising only the Euclidean coordinates of the atom in a 3-dimensional space. The interatomic relationships are captured using the adjacency matrix A ∈ RN×N. In our case, the entries of the adjacency matrix are the Euclidean distance between pairs of atoms resulting in a soft adjacency matrix. However, when the distance between any pair of nodes is larger than the lattice constant the corresponding edge weight is set to zero. 
+Each structure in graph representation can be described as, G = (X,A), where X ∈ R<sup>N×F</sup> is the node feature matrix which contains F features that can describe each of the N atoms in the structure. We use F = 3 comprising only the Euclidean coordinates of the atom in a 3-dimensional space. The interatomic relationships are captured using the adjacency matrix A ∈ R<sup>N×N</sup>. In our case, the entries of the adjacency matrix are the Euclidean distance between pairs of atoms resulting in a soft adjacency matrix. However, when the distance between any pair of nodes is larger than the lattice constant the corresponding edge weight is set to zero. 
 
 The following figure shows a decahedron consisting of seven atoms alongside the components describing it in our chosen graph representation!
 ![alt text](../img/graph_rep.png "Graphs representation of MMNPs.")
