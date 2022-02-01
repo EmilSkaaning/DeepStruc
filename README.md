@@ -7,13 +7,14 @@ thereby solve a structure based from a PDF!
 1. [DeepStruc](#deepstruc)
 2. [Getting started (with Colab)](#getting-started-with-colab)
 3. [Getting started (own computer)](#getting-started-own-computer)
-3.1. [Train model](#train-model)
-3.2. [Predict](#predict)
-5. [Simulate data](#simulate-data)
-6. [Author](#author)
-7. [Cite](#cite)
-8. [Acknowledgments](#Acknowledgments)
-9. [License](#license)  
+3.1. [Install requirements] (#install-requirements)
+3.2. [Train model](#train-model)
+3.3. [Predict](#predict)
+4. [Simulate data](#simulate-data)
+5. [Author](#author)
+6. [Cite](#cite)
+7. [Acknowledgments](#Acknowledgments)
+8. [License](#license)  
 
 We here apply DeepStruc for the structural analysis of a model system of monometallic nanoparticles (MMNPs) with seven
 different structure types and demonstrate the method for both simulated and experimental PDFs. DeepStruc can reconstruct
