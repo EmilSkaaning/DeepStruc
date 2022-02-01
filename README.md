@@ -75,7 +75,7 @@ A list of possible arguments or run the '--help' argument for additional informa
 | `-d` or `--data` | Path to data or data directory. If pointing to data directory all datasets must have same format. __str__| `-d data/experimental_PDFs/JQ_S1.gr`  |  
 | `-m` or `--model` | Path to model. If 'None' GUI will open. __str__ | `-m ./models/DeepStruc`  |   
 | `-n` or `--num_samples` | Number of samples/structures generated for each unique PDF. __int__| `-n 10`  |
-| `-s` or `--sigma` | Sample out to X sigma in the normal distribution. __float__| `-s 7`  |  
+| `-s` or `--sigma` | Sample to '-s' sigma in the normal distribution. __float__| `-s 7`  |  
 | `-p` or `--plot_sampling` | Plots sampled structures on top of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
 | `-g` or `--save_path` | Path to directory where predictions will be saved. __bool__| `-g ./best_preds`  |  
 
