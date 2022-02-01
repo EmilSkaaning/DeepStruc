@@ -37,6 +37,10 @@ Using DeepStruc on your own PDFs is straightforward and does not require anythin
 Follow the instructions in our [Colab notebook](https://colab.research.google.com/drive/18oLE4qNo3K7DW7T0OAO1t6SYYeuRg6Sq#scrollTo=Zuj3jyFl_S66)
 and try to play around. 
 
+# Getting started (own computer)
+## Install requirements
+See the [install](/install) folder. 
+
 ## Train model
 To train your own DeepStruc model simply run:
 ```
