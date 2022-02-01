@@ -8,13 +8,13 @@ thereby solve a structure based from a PDF!
 2. [Getting started (with Colab)](#getting-started-with-colab)
 3. [Getting started (own computer)](#getting-started-own-computer)
     1. [Install requirements](#install-requirements)
-    2. [Train model](#train-model)
-    3. [Predict](#predict)
-4. [Simulate data](#simulate-data)
-5. [Author](#author)
-6. [Cite](#cite)
-7. [Acknowledgments](#Acknowledgments)
-8. [License](#license)  
+    2. [Simulate data](#simulate-data)
+    3. [Train model](#train-model)
+    4. [Predict](#predict)
+4. [Author](#author)
+5. [Cite](#cite)
+6. [Acknowledgments](#Acknowledgments)
+7. [License](#license)  
 
 We here apply DeepStruc for the structural analysis of a model system of monometallic nanoparticles (MMNPs) with seven
 different structure types and demonstrate the method for both simulated and experimental PDFs. DeepStruc can reconstruct
@@ -44,6 +44,9 @@ Follow these step if you want to train DeepStruc and predict with DeepStruc loca
 
 ## Install requirements
 See the [install](/install) folder. 
+
+## Simulate data
+See the [data](/data) folder. 
 
 ## Train model
 To train your own DeepStruc model simply run:
@@ -87,9 +90,6 @@ A list of possible arguments or run the '--help' argument for additional informa
 | `-p` or `--plot_sampling` | Plots sampled structures on top of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
 | `-g` or `--save_path` | Path to directory where predictions will be saved. __bool__| `-g ./best_preds`  |  
 
-
-## Simulate data
-See the [data](/data) folder. 
 
 # Authors
 __Andy S. Anker__<sup>1</sup>   
