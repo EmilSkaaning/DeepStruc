@@ -12,7 +12,7 @@ Or create one and activate it afterwards.
 ```
 conda create --name env_name python=3.7
 ``` 
-Now install the required packages.
+Now install the required packages through the requirement files and then install DiffPy-CMI (see how to [HERE](https://www.diffpy.org/products/diffpycmi/index.html)).
 ```
 pip install -r requirements_pip.txt
 conda install --file requirements_conda.txt
