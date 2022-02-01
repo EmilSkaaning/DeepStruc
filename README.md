@@ -38,7 +38,7 @@ Follow the instructions in our [Colab notebook](https://colab.research.google.co
 and try to play around. 
 
 ## Train model
-To train you own DeepStruc model simply run:
+To train your own DeepStruc model simply run:
 ```
 python train.py
 ```
