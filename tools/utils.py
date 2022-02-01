@@ -50,10 +50,13 @@ def get_data(args):  # Todo: write your own dataloader.
                     start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
                 except:
                     raise IndexError("The PDFs first value is above 2 Å. You can try adding 0's down to 2 Å as a quick fix.")
-                try:
-                    end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
-                except:
-                    raise IndexError("The PDFs last value is before 30 Å. You can try adding 0's up to 30 Å as a quick fix.")
+                if np.amax(data[0]) <= 30.:
+                    end_PDF = -1
+                else:
+                    try:
+                        end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
+                    except:
+                        raise IndexError("The PDFs last value is before 30 Å. You can try adding 0's up to 30 Å as a quick fix.")
                 new_data = data[1][start_PDF:end_PDF]
                 np_data[idxx] = new_data
                 
