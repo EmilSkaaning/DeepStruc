@@ -81,7 +81,7 @@ A list of possible arguments or run the '--help' argument for additional informa
 
 
 ## Simulate data
-See the [data](data/README.md) folder. 
+See the [data](/data) folder. 
 
 # Authors
 __Andy S. Anker__<sup>1</sup>   
