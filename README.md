@@ -86,6 +86,7 @@ See the [data](/data) folder.
 # Authors
 __Andy S. Anker__<sup>1</sup>   
 __Emil T. S. Kjær__<sup>1</sup>  
+__Marcus N. Weng__<sup>1</sup>  
 __Simon J. L. Billinge__<sup>2, 3</sup>     
 __Raghavendra Selvan__<sup>4, 5</sup>  
 __Kirsten M. Ø. Jensen__<sup>1</sup>    
