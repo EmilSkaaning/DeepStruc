@@ -15,7 +15,8 @@ script is needed.
     3. [Pair Distribution Function (PDF)](#pair-distribution-function-pdf)
 
 # Generate data
-To generate more data run the gen_data.py script. The scripts takes a range of arguments which are all descriped below
+[DiffPy-CMI](https://www.diffpy.org/products/diffpycmi/index.html) in required to simulate PDFs, which only runs on Linux or macOS. To run it on a Windows computer
+please use the [Ubuntu subsystem](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview). To generate more data run the gen_data.py script. The scripts takes a range of arguments which are all descriped below
 or use the __help__ command to produce the parameter list. The __help__ argument will also show default values.  
 ```
 python gen_data.py --help
@@ -29,7 +30,7 @@ python gen_data.py --help
 ```
 
 ## Generate data arguments
-List of possible arguments.  
+list of possible arguments or run the '--help' argument for additional information.  
  
 | Arg | Description | Example |  
 | --- | --- |  --- |  
@@ -50,15 +51,15 @@ List of possible arguments.
 
   
 # Generel data structure
-For detailed description of the data format please revisit the paper.
+A simplified description is shown below. For detailed description of the data format please revisit the paper.
 
 ## Mono-Metallic Nanoparticles (MMNPs)
 The MMNPs are described using a XYZ format describing the element and their euclidian distances as seen below:
 
-#Atoms <br> <br>
-Atom1 &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
-Atom2 &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
-AtomN &nbsp; &nbsp; x &nbsp; &nbsp; y &nbsp; &nbsp; z <br>
+Atom<sub>1</sub> &nbsp; &nbsp; x<sub>1</sub> &nbsp; &nbsp; y<sub>1</sub> &nbsp; &nbsp; z<sub>1</sub> <br>
+Atom<sub>2</sub> &nbsp; &nbsp; x<sub>2</sub> &nbsp; &nbsp; y<sub>2</sub> &nbsp; &nbsp; z<sub>2</sub> <br>
+...  
+Atom<sub>N</sub> &nbsp; &nbsp; x<sub>N</sub> &nbsp; &nbsp; y<sub>N</sub> &nbsp; &nbsp; z<sub>N</sub> <br>
 
 ## Graph representation
 Each structure in graph representation can be described as, G = (X,A), where X ∈ RN×F is the node feature matrix which contains F features that can describe each of the N atoms in the structure. We use F = 3 comprising only the Euclidean coordinates of the atom in a 3-dimensional space. The interatomic relationships are captured using the adjacency matrix A ∈ RN×N. In our case, the entries of the adjacency matrix are the Euclidean distance between pairs of atoms resulting in a soft adjacency matrix. However, when the distance between any pair of nodes is larger than the lattice constant the corresponding edge weight is set to zero. 

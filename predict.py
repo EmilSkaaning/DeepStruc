@@ -45,7 +45,7 @@ parser.add_argument("-m", "--model", default='DeepStruc', type=str,
 parser.add_argument("-n", "--num_samples", default=5, type=int,
                     help="Number of samples/structures generated.")
 
-parser.add_argument("-s", "--sigma", default=1, type=float,
+parser.add_argument("-s", "--sigma", default=3, type=float,
                     help="Multiplier of the normaldistributions sigma.")
 
 parser.add_argument("-p", "--plot_sampling", default=False, type=bool,
