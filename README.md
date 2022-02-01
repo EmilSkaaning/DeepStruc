@@ -6,8 +6,9 @@ thereby solve a structure based from a PDF!
 
 1. [DeepStruc](#deepstruc)
 2. [Getting started (with Colab)](#getting-started-with-colab)
-3. [Train model](#train-model)
-4. [Predict](#predict)
+3. [Getting started (own computer)](#getting-started-own-computer)
+ 3.1. [Train model](#train-model)
+ 3.2. [Predict](#predict)
 5. [Simulate data](#simulate-data)
 6. [Author](#author)
 7. [Cite](#cite)
@@ -38,6 +39,8 @@ Follow the instructions in our [Colab notebook](https://colab.research.google.co
 and try to play around. 
 
 # Getting started (own computer)
+Follow these step if you want to train DeepStruc and predict with DeepStruc locally on your own computer.
+
 ## Install requirements
 See the [install](/install) folder. 
 
