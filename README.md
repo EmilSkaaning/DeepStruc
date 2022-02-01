@@ -55,7 +55,7 @@ If you are intersted in changing the architecture of the model go to __train.py_
 | `-b` or `--batch_size` | Number of graphs in each batch. __int__| `-b 20`  |  
 | `-l` or `--learning_rate` | Learning rate. __float__| `-l 1e-4`  |  
 | `-B` or `--beta` | Initial beta value for scaling KLD. __float__| `-B 0.1`  |  
-| `-i` or `--beta_increase` | "Increments of beta when the threshold is met. __float__| `-i 0.1`  |  
+| `-i` or `--beta_increase` | Increments of beta when the threshold is met. __float__| `-i 0.1`  |  
 | `-x` or `--beta_max` | Highst value beta can increase to. __float__| `-x 5`  |  
 | `-t` or `--reconstruction_th` | Reconstruction threshold required before beta is increased. __float__| `-t 0.001`  |  
 | `-n` or `--num_files` | Total number of files loaded. Files will be split 60/20/20. If 'None' then all files are loaded. __int__| `-n 500`  |  
