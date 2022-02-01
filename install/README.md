@@ -4,7 +4,7 @@ This includes [PyTorch](https://pytorch.org/) and
 [PyTorch-Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), make sure that
 the versions match.
 All other packages can be install through the requirement files or the install.sh file. 
-First go to your decired conda environment.
+First go to your desired conda environment.
  ```
 conda activate <env_name>
 ``` 
