@@ -7,7 +7,7 @@ thereby solve a structure based from a PDF!
 1. [DeepStruc](#deepstruc)
 2. [Getting started (with Colab)](#getting-started-with-colab)
 3. [Getting started (own computer)](#getting-started-own-computer)
-3.1. [Install requirements] (#install-requirements)
+3.1. [Install requirements](#install-requirements)
 3.2. [Train model](#train-model)
 3.3. [Predict](#predict)
 4. [Simulate data](#simulate-data)
