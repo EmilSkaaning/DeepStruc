@@ -44,10 +44,19 @@ def get_data(args):  # Todo: write your own dataloader.
             x_list.append(data[0])
             y_list.append(data[1])
             for i in range(samples):
-                if len(data[1]) < 3001:
-                    np_data[idxx][200:len(data[1])] = data[1][200:len(data[1])]
-                else:
-                    np_data[idxx] = data[1][200:3000]
+                if round(data[0][1] - data[0][0],2) != 0.01:
+                    raise ValueError("The PDF does not have an r-step of 0.01 Å")
+                try:
+                    start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
+                except:
+                    raise IndexError("The PDFs first value is above 2 Å. You can try adding 0's down to 2 Å as a quick fix.")
+                try:
+                    end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
+                except:
+                    raise IndexError("The PDFs last value is before 30 Å. You can try adding 0's up to 30 Å as a quick fix.")
+                new_data = data[1][start_PDF:end_PDF]
+                np_data[idxx] = new_data
+                
                 np_data[idxx] /= np.amax(np_data[idxx])
                 idxx += 1
                 name_list.append(file)
