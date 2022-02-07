@@ -1,6 +1,5 @@
-import torch, random, os, yaml
+import torch, os, yaml, sys
 import numpy as np
-import pytorch_lightning as pl
 import matplotlib.pyplot as plt
 import pandas as pd
 from tqdm import tqdm
@@ -10,18 +9,13 @@ from matplotlib.gridspec import GridSpec
 import datetime
 from tools.data_loader import save_xyz_file
 
-seed = 37
-torch.manual_seed(seed)
-pl.seed_everything(seed)
-torch.manual_seed(seed)
-np.random.seed(seed)
-random.seed(seed)
-
 
 def get_data(args):  # Todo: write your own dataloader.
     ct = str(datetime.datetime.now()).replace(' ', '_').replace(':','-').replace('.','-')
     project_name = f'{args.save_path}/DeepStruc_{ct}'
     print(f'\nProject name is: {project_name}')
+    if not os.path.isdir(f'{project_name}'):
+        os.mkdir(f'{project_name}')
 
     this_path = args.data
     samples = args.num_samples
@@ -44,32 +38,48 @@ def get_data(args):  # Todo: write your own dataloader.
             x_list.append(data[0])
             y_list.append(data[1])
             Gr_ph = data[1]
+            r_ph = data[0]
             if round(data[0][1] - data[0][0],2) != 0.01:
                 raise ValueError("The PDF does not have an r-step of 0.01 Å")
             try:
                 start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
             except:
                 Gr_ph = np.concatenate((np.zeros((int((data[0][0])/0.01))), Gr_ph))
+                r_ph = np.concatenate((np.zeros((int((data[0][0]) / 0.01))), r_ph))
                 print("The PDFs first value is above 2 Å. We have added 0's down to 2 Å as a quick fix.")
             try:
                 end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
             except:
                 Gr_ph = np.concatenate((Gr_ph, np.zeros((3000-len(Gr_ph)))))
+                r_ph = np.concatenate((Gr_ph, np.zeros((3000-len(r_ph)))))
                 print("The PDFs last value is before 30 Å. We have added 0's up to 30 Å as a quick fix.")
             Gr_ph = Gr_ph[200:3000]
+            if idx == 0:
+                r_true = r_ph[200:3000]
+
             for i in range(samples):
                 np_data[idxx] = Gr_ph
-                
                 np_data[idxx] /= np.amax(np_data[idxx])
                 idxx += 1
                 name_list.append(file)
             break
 
+    if args.plot_data==True:
+        fig, ax = plt.subplots()
 
+        plt.plot(x_list[0], y_list[0], label="Input PDF")
+        plt.plot(r_true, np_data[0], label="DeepStruc PDF")
+        ax.set_xlabel(r'r / $\mathtt{\AA}$')
+        ax.set_ylabel('G(r) / a.u.')
+
+        ax.set_xlim(0,30)
+        plt.legend()
+        plt.title(f'{files[0]}')
+        plt.tight_layout()
+        plt.savefig(f'{project_name}/PDFs.png', dpi=300)
 
     np_data = np_data.reshape((len(files)*samples, 2800, 1))
     np_data = torch.tensor(np_data, dtype=torch.float)
-
     return np_data, name_list, project_name
 
 
@@ -82,7 +92,6 @@ def format_predictions(latent_space, data_names, mus, sigmas, sigma_inc):
         if '.' in j:
             j_idx = j.rindex('.')
             j = j[:j_idx]
-
 
         info_dict = {
             'x': i[0].detach().cpu().numpy(),
@@ -97,7 +106,7 @@ def format_predictions(latent_space, data_names, mus, sigmas, sigma_inc):
     return df_preds
 
 
-def plot_ls(df, mk_dir):
+def plot_ls(df, mk_dir, index_highlight):
     if not os.path.isdir(mk_dir):
         os.mkdir(mk_dir)
     ideal_ls = './tools/ls_points.csv'
@@ -127,6 +136,28 @@ def plot_ls(df, mk_dir):
     gs = GridSpec(1, 5, figure=fig)
     ax = fig.add_subplot(gs[0, :4])
     ax_legend = fig.add_subplot(gs[0, 4])
+
+    if index_highlight >= len(df):
+        print(f'\nIndex argument is to large! Need to be smaller than {len(df)} but was {index_highlight}')
+        raise IndexError
+    elif index_highlight < -1:
+        print(f'\nIndex argument invalid! Must be integer from -1 to number of samples generated.')
+        raise ValueError
+    elif index_highlight==-1:
+        pass
+    elif len(df['file_name'].unique()) > 1:
+        print(f'\nCan only show highlight index if --data is specific file but {len(df["file_name"].unique())} files were loaded.')
+    else:
+        print(f'\nHighlighting index {index_highlight} from the {df["file_name"].unique()[0]} sampling pool.')
+        ax.scatter(df.iloc[index_highlight]['x'], df.iloc[index_highlight]['y'], c='k', s=40,
+                   linewidth=0.0, marker='o', zorder=3)
+        ax.scatter(df.iloc[index_highlight]['x'], df.iloc[index_highlight]['y'], c='w', s=25,
+                   linewidth=0.0, marker='o', zorder=3)
+        ax.scatter(df.iloc[index_highlight]['x'], df.iloc[index_highlight]['y'], c='k', s=10,
+                   linewidth=0.0, marker='o', zorder=3)
+        ax.scatter(df.iloc[index_highlight]['x'], df.iloc[index_highlight]['y'], c='w', s=1,
+                   linewidth=0.0, marker='o', zorder=3)
+
     print('\nPlotting DeepStruc training + validation data.')
     pbar = tqdm(total=len(df_ideal))
     for idx in range(len(df_ideal)):
@@ -174,7 +205,7 @@ def plot_ls(df, mk_dir):
         pbar.update()
     pbar.close()
     ax_legend.legend(handles=mlines_list,fancybox=True, #ncol=2,  #, bbox_to_anchor=(0.8, 0.5)
-          markerscale=MARKER_SCALE, fontsize=MARKER_FONT_SIZE, loc='center')
+          markerscale=MARKER_SCALE, fontsize=MARKER_FONT_SIZE, loc='upper right')
 
     ax.set_xlabel('Latent space x', size=10)  # Latent Space Feature 1
     ax.set_ylabel('Latent space y', size=10)

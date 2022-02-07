@@ -89,6 +89,8 @@ A list of possible arguments or run the '--help' argument for additional informa
 | `-s` or `--sigma` | Sample to '-s' sigma in the normal distribution. __float__| `-s 7`  |  
 | `-p` or `--plot_sampling` | Plots sampled structures on top of DeepStruc training data. Model must be DeepStruc. __bool__| `-p True`  |  
 | `-g` or `--save_path` | Path to directory where predictions will be saved. __bool__| `-g ./best_preds`  |  
+| `-i` or `--index_plot` | Highlights specific reconstruction in the latent space. --data must be specific file and not directory and  '--plot True'. __int__| `-i 4`  |  
+| `-P` or `--plot_data` | If True then the first loaded PDF is plotted and shown after normalization. __bool__| `-P ./best_preds`  |  
 
 
 # Authors

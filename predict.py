@@ -22,7 +22,7 @@ def main(args):
     samling_pairs = format_predictions(latent_space, data_name, mu, sigma, args.sigma)
 
     if args.plot_sampling == True and args.model == 'DeepStruc':
-        plot_ls(samling_pairs, project_name)
+        plot_ls(samling_pairs, project_name, args.index_plot)
     elif args.plot_sampling == True and args.model != 'DeepStruc':
         print("Argument '--model' needs to be default DeepStruc value for plot to be generated!")
 
@@ -36,7 +36,7 @@ Predict data.
 
 parser = argparse.ArgumentParser(description=_BANNER, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-parser.add_argument("-d", "--data", default='./data/experimental_PDFs', type=str,
+parser.add_argument("-d", "--data", default='data/PDFs_simulated', type=str,
                     help="Path to data or data directory. If pointing to data directory all datasets must have same format.")
 
 parser.add_argument("-m", "--model", default='DeepStruc', type=str,
@@ -54,7 +54,12 @@ parser.add_argument("-p", "--plot_sampling", default=False, type=bool,
 parser.add_argument("-g", "--save_path", default='.', type=str,  # todo: add in README
                     help="Save predictions path.")
 
+parser.add_argument("-i", "--index_plot", default=-1, type=int,  # todo: add in README
+                    help="Highlights specific reconstruction in the latent space. --data must be specific file "
+                         "and not directory and  '--plot True'.")
 
+parser.add_argument("-P", "--plot_data", default=True, type=bool,  # todo: add in README
+                    help="If True then the first loaded PDF is plotted and shown after normalization.")
 
 if __name__=='__main__':
     args = parser.parse_args()

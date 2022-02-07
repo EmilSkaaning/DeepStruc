@@ -1,21 +1,13 @@
 import torch.nn as nn
-import torch, sys, random
+import torch, sys
 import torch.nn.functional as F
 import torch.nn
-from torch_geometric.nn import GCNConv, GATConv, GatedGraphConv, GraphConv, SAGEConv, GCN2Conv, EdgeConv, AGNNConv, DNAConv
+from torch_geometric.nn import GATConv
 import pytorch_lightning as pl
 from collections import OrderedDict
 from torch_geometric.nn.glob import global_add_pool, GlobalAttention
-import numpy as np
 from torch.distributions import Normal, Independent
 from torch.distributions.kl import kl_divergence as KLD
-
-seed = 37
-torch.manual_seed(seed)
-pl.seed_everything(seed)
-torch.manual_seed(seed)
-np.random.seed(seed)
-random.seed(seed)
 
 class Net(pl.LightningModule):
     def __init__(self, model_arch, lr=1e-4, beta=0, beta_inc=0.001, beta_max=1, rec_th=0.0001):

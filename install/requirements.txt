@@ -1,0 +1,11 @@
+torch-geometric==1.7.2
+pytorch-lightning
+h5py
+matplotlib>=3.4.3
+numpy
+PyYAML
+tqdm
+pandas
+scipy
+mendeleev
+ase
