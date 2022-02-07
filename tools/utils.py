@@ -38,20 +38,17 @@ def get_data(args):  # Todo: write your own dataloader.
             x_list.append(data[0])
             y_list.append(data[1])
             Gr_ph = data[1]
-            r_ph = data[0]
             if round(data[0][1] - data[0][0],2) != 0.01:
                 raise ValueError("The PDF does not have an r-step of 0.01 Å")
             try:
                 start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
             except:
                 Gr_ph = np.concatenate((np.zeros((int((data[0][0])/0.01))), Gr_ph))
-                r_ph = np.concatenate((np.zeros((int((data[0][0]) / 0.01))), r_ph))
                 print("The PDFs first value is above 2 Å. We have added 0's down to 2 Å as a quick fix.")
             try:
                 end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
             except:
                 Gr_ph = np.concatenate((Gr_ph, np.zeros((3000-len(Gr_ph)))))
-                r_ph = np.concatenate((r_ph, np.zeros((3000-len(r_ph)))))
                 print("The PDFs last value is before 30 Å. We have added 0's up to 30 Å as a quick fix.")
             Gr_ph = Gr_ph[200:3000]
 
