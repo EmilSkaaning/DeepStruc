@@ -5,13 +5,6 @@ from torch_geometric.data import Data, DataLoader
 from tqdm import tqdm
 import pytorch_lightning as pl
 
-seed = 37
-torch.manual_seed(seed)
-pl.seed_everything(seed)
-
-torch.manual_seed(seed)
-np.random.seed(seed)
-random.seed(seed)
 
 class graph_loader(pl.LightningDataModule):
     def __init__(self, data_dir, cluster_size=None, num_files=None, batchsize=1, shuffle=True, num_workers=0):

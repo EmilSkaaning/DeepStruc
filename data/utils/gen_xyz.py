@@ -18,7 +18,7 @@ from ase.cluster.decahedron import Decahedron
 from ase.cluster.icosahedron import Icosahedron
 from ase.cluster.octahedron import Octahedron
 from tqdm import tqdm
-import mendeleev
+import mendeleev, datetime
 import os, pdb
 from shutil import copyfile
 
@@ -353,29 +353,15 @@ def new_structure_checker(Input_array, list_search):
 
 
 
-
-
-#type_list = ["SC", "FCC", "BCC"]
-#type_list = ["HCP"]
-#type_list = ["Ico", "Dec"", "Oct"]
-
-"""type_list = ["SC", "FCC", "BCC", "HCP", "Ico", "Dec"", "Oct"]
-
-max_atoms = 200
-interpolate = 1
-
-directory = "/media/skaaning/Seagate Backup Plus Drive/Mono_metals_db/xyz_db_raw_atoms_{:03d}_interpolate_{:03d}/".format(max_atoms, interpolate)
-directory = './test_xyz'"""
-
-
-
 def gen_xyz(atoms, type_list, max_atoms, interpolate, directory_base):
 	if directory_base==None:
-		directory_base = "strus_atoms_{:03d}_interpolate_{:03d}/".format(max_atoms, interpolate)
+		ct = str(datetime.datetime.now()).replace(' ', '_').replace(':', '-').replace('.', '-')
+		directory_base = f'./data_{ct}'
+		print(f'\nProject name is: {directory_base}')
 	elif directory_base[-1] != '/':
 		directory_base = f'{directory_base}/'
 
-	directory = f"{directory_base}xyz_raw/"
+	directory = f"{directory_base}/xyz_raw/"
 	try:
 		os.makedirs(directory)
 	except FileExistsError:
