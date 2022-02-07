@@ -38,24 +38,19 @@ def get_data(args):  # Todo: write your own dataloader.
             x_list.append(data[0])
             y_list.append(data[1])
             Gr_ph = data[1]
-            r_ph = data[0]
             if round(data[0][1] - data[0][0],2) != 0.01:
                 raise ValueError("The PDF does not have an r-step of 0.01 Å")
             try:
                 start_PDF = np.where((data[0] > 1.995) & (data[0] < 2.005))[0][0]
             except:
                 Gr_ph = np.concatenate((np.zeros((int((data[0][0])/0.01))), Gr_ph))
-                r_ph = np.concatenate((np.zeros((int((data[0][0]) / 0.01))), r_ph))
                 print("The PDFs first value is above 2 Å. We have added 0's down to 2 Å as a quick fix.")
             try:
                 end_PDF = np.where((data[0] > 29.995) & (data[0] < 30.005))[0][0]
             except:
                 Gr_ph = np.concatenate((Gr_ph, np.zeros((3000-len(Gr_ph)))))
-                r_ph = np.concatenate((Gr_ph, np.zeros((3000-len(r_ph)))))
                 print("The PDFs last value is before 30 Å. We have added 0's up to 30 Å as a quick fix.")
             Gr_ph = Gr_ph[200:3000]
-            if idx == 0:
-                r_true = r_ph[200:3000]
 
             for i in range(samples):
                 np_data[idxx] = Gr_ph
@@ -68,7 +63,7 @@ def get_data(args):  # Todo: write your own dataloader.
         fig, ax = plt.subplots()
 
         plt.plot(x_list[0], y_list[0], label="Input PDF")
-        plt.plot(r_true, np_data[0], label="DeepStruc PDF")
+        plt.plot(np.arange(2, 30, 0.01), np_data[0], label="DeepStruc PDF")
         ax.set_xlabel(r'r / $\mathtt{\AA}$')
         ax.set_ylabel('G(r) / a.u.')
 
