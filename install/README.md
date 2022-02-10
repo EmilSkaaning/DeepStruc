@@ -2,7 +2,7 @@
 To run DeepStruc you will need some packages, which are dependent on your computers specifications. 
 This includes [PyTorch](https://pytorch.org/) and 
 [PyTorch-Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), make sure that
-the versions match and PyTorch-Geometric is version 1.7.2.
+the versions match and [PyTorch-Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) is version 1.7.2.
 All other packages can be install through the requirement file. 
 First go to your desired conda environment.
  ```
