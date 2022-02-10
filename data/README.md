@@ -54,7 +54,7 @@ list of possible arguments or run the '--help' argument for additional informati
 A simplified description is shown below. For detailed description of the data format please revisit the paper.
 
 ## Mono-Metallic Nanoparticles (MMNPs)
-The MMNPs are described using a XYZ format describing the element and their euclidian distances as seen below:
+To simulate MMNPs we use the [ASE](https://wiki.fysik.dtu.dk/ase/#) library. All of the MMNPs are in a XYZ format where the elements and their euclidian distances are described as seen below:
 
 Atom<sub>1</sub> &nbsp; &nbsp; x<sub>1</sub> &nbsp; &nbsp; y<sub>1</sub> &nbsp; &nbsp; z<sub>1</sub> <br>
 Atom<sub>2</sub> &nbsp; &nbsp; x<sub>2</sub> &nbsp; &nbsp; y<sub>2</sub> &nbsp; &nbsp; z<sub>2</sub> <br>
