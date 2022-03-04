@@ -202,8 +202,8 @@ def plot_ls(df, mk_dir, index_highlight):
     ax_legend.legend(handles=mlines_list,fancybox=True, #ncol=2,  #, bbox_to_anchor=(0.8, 0.5)
           markerscale=MARKER_SCALE, fontsize=MARKER_FONT_SIZE, loc='upper right')
 
-    ax.set_xlabel('Latent space z0', size=10)  # Latent Space Feature 1
-    ax.set_ylabel('Latent space z1', size=10)
+    ax.set_xlabel('Latent space $\mathregular{z_0}$', size=10)  # Latent Space Feature 1
+    ax.set_ylabel('Latent space $\mathregular{z_1}$', size=10)
 
     ax_legend.spines['top'].set_visible(False)
     ax_legend.spines['right'].set_visible(False)
