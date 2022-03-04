@@ -137,6 +137,10 @@ class graph_loader(pl.LightningDataModule):
 def save_xyz_file(save_dir, cords, file_name, xyz_scale=[1,1,1]):
 
     cords = [xyz for xyz in cords if np.mean(xyz) >= -0.2]
+    cords = np.array(cords)
+    cords[:,0] -= cords[:,0].mean()
+    cords[:,1] -= cords[:,1].mean()
+    cords[:,2] -= cords[:,2].mean()
     these_cords = []
     for count, xyz in enumerate(cords):
         if count == 0:
