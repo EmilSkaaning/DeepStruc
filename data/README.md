@@ -3,14 +3,14 @@
 # Data introduction
 This folder contains __graphs__-, __utils__ folder and a gen_data.py script.  
 The __graphs__ folder contains a small set of graph which can be used to varify that DeepStruc is running. To
-generate a broader distribution of Mono-Metallic Nanoparticles (MMNPs) for training, validation and testing the gen_data.py 
+generate a broader distribution of mono-metallic nanoparticles (MMNPs) for training, validation and testing the gen_data.py 
 script is needed.
   
 
 1. [Generate data](#generate-data)
     1. [Generate data arguments](#generate-data-arguments)
 2. [Generel data structure](#generel-data-structure)
-    1. [Mono-Metallic Nanoparticles (MMNPs)](#mono-metallic-nanoparticles-mmnps)
+    1. [Mono-metallic nanoparticles (MMNPs)](#mono-metallic-nanoparticles-mmnps)
     2. [Graph representation](#graph-representation)
     3. [Pair Distribution Function (PDF)](#pair-distribution-function-pdf)
 
@@ -53,7 +53,7 @@ list of possible arguments or run the '--help' argument for additional informati
 # Generel data structure
 A simplified description is shown below. For detailed description of the data format please revisit the paper.
 
-## Mono-Metallic Nanoparticles (MMNPs)
+## Mono-metallic nanoparticles (MMNPs)
 To simulate MMNPs we use the [ASE](https://wiki.fysik.dtu.dk/ase/#) library. All of the MMNPs are in a XYZ format where the elements and their euclidian distances are described as seen below:
 
 Atom<sub>1</sub> &nbsp; &nbsp; x<sub>1</sub> &nbsp; &nbsp; y<sub>1</sub> &nbsp; &nbsp; z<sub>1</sub> <br>
