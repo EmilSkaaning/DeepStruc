@@ -36,7 +36,7 @@ The baseline models can be found in other repositories: [brute-force](https://gi
 
 # Getting started (with Colab)
 Using DeepStruc on your own PDFs is straightforward and does not require anything installed or downloaded to your computer.
-Follow the instructions in our [Colab notebook](https://colab.research.google.com/drive/18oLE4qNo3K7DW7T0OAO1t6SYYeuRg6Sq#scrollTo=Zuj3jyFl_S66)
+Follow the instructions in our [Colab notebook](https://colab.research.google.com/github/EmilSkaaning/DeepStruc/blob/main/DeepStruc.ipynb)
 and try to play around. 
 
 # Getting started (own computer)
