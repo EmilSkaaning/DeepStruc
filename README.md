@@ -111,14 +111,13 @@ Should there be any question, desired improvement or bugs please contact us on G
 through email: __andy@chem.ku.dk__ or __etsk@chem.ku.dk__.
 
 # Cite
-If you use our code or our results, please consider citing our paper. Thanks in advance!
+If you use our code or our results, please consider citing our papers. Thanks in advance!
 ```
 @article{kjær2022DeepStruc,
 title={DeepStruc: Towards structure solution from pair distribution function data using deep generative models},
 author={Emil T. S. Kjær, Andy S. Anker, Marcus N. Weng, Simon J. L. Billinge, Raghavendra Selvan, Kirsten M. Ø. Jensen},
 year={2022}}
 ```
-&
 ```
 @article{anker2020characterising,
 title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
