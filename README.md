@@ -118,6 +118,13 @@ title={DeepStruc: Towards structure solution from pair distribution function dat
 author={Emil T. S. Kjær, Andy S. Anker, Marcus N. Weng, Simon J. L. Billinge, Raghavendra Selvan, Kirsten M. Ø. Jensen},
 year={2022}}
 ```
+&
+```
+@article{anker2020characterising,
+title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
+author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+year={2020}}
+```
 
 # Acknowledgments
 Our code is developed based on the the following publication:
