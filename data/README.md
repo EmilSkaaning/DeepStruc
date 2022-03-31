@@ -30,7 +30,7 @@ python gen_data.py --help
 ```
 
 ## Generate data arguments
-list of possible arguments or run the '--help' argument for additional information.  
+List of possible arguments or run the '--help' argument for additional information.  
  
 | Arg | Description | Example |  
 | --- | --- |  --- |  
