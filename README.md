@@ -24,11 +24,9 @@ We demonstrate the generative capability of DeepStruc on a dataset of face-cente
 (hcp) and stacking faulted structures, where DeepStruc can recognize the stacking faulted structures as an interpolation
 between fcc and hcp and construct new structural models based on a PDF. The MAE is in this example 0.030 ± 0.019 Å.
 
-The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare DeepStruc with a similar DGM
+The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare DeepStruc with a similar [DGM](https://github.com/AndyNano/CVAE.git)
 without the graph-based encoder. DeepStruc is able to reconstruct the structures using a smaller dimension of the latent
-space thus having a better generative capabillity. We also compare DeepStruc with a brute-force modelling approach and
-a tree-based classification algorithm. The ML models are significantly faster than the brute-force approach, but DeepStruc
-can furthermore create a latent space from where synthetic structures can be sampled which the tree-based method cannot!
+space thus having a better generative capabillity. We also compare DeepStruc with a [brute-force modelling](https://github.com/AndyNano/Brute-force-PDF-modelling.git) approach and a [tree-based classification algorithm](https://github.com/AndyNano/MetalFinder.git). The ML models are significantly faster than the brute-force approach, but DeepStruc can furthermore create a latent space from where synthetic structures can be sampled which the tree-based method cannot!
 The baseline models can be found in other repositories: [brute-force](https://github.com/AndyNano/Brute-force-PDF-modelling.git),
 [MetalFinder](https://github.com/AndyNano/MetalFinder.git) and [CVAE](https://github.com/AndyNano/CVAE.git).
 ![alt text](img/DeepStruc.png "DeepStruc")
