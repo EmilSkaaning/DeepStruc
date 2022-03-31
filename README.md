@@ -26,7 +26,7 @@ between fcc and hcp and construct new structural models based on a PDF. The MAE 
 
 The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare DeepStruc with a similar DGM
 without the graph-based encoder. DeepStruc is able to reconstruct the structures using a smaller dimension of the latent
-space thus having a better generative capabillity. We also compared DeepStruc with a brute-force modelling approach and
+space thus having a better generative capabillity. We also compare DeepStruc with a brute-force modelling approach and
 a tree-based classification algorithm. The ML models are significantly faster than the brute-force approach, but DeepStruc
 can furthermore create a latent space from where synthetic structures can be sampled which the tree-based method cannot!
 The baseline models can be found in other repositories: [brute-force](https://github.com/AndyNano/Brute-force-PDF-modelling.git),
