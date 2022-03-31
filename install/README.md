@@ -1,5 +1,5 @@
 # Install
-To run DeepStruc you will need some packages, which are dependent on your computers specifications. 
+To run DeepStruc you will need some packages, which are dependent on your computer specifications. 
 This includes [PyTorch](https://pytorch.org/) and 
 [PyTorch-Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), make sure that
 the versions match and [PyTorch-Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) is version 1.7.2.
