@@ -24,7 +24,7 @@ We demonstrate the generative capability of DeepStruc on a dataset of face-cente
 (hcp) and stacking faulted structures, where DeepStruc can recognize the stacking faulted structures as an interpolation
 between fcc and hcp and construct new structural models based on a PDF. The MAE is in this example 0.030 ± 0.019 Å.
 
-The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare the DeepStruc with a similar DGM
+The MMNPs are provided as a graph-based input to the encoder of DeepStruc. We compare DeepStruc with a similar DGM
 without the graph-based encoder. DeepStruc is able to reconstruct the structures using a smaller dimension of the latent
 space thus having a better generative capabillity. We also compared DeepStruc with a brute-force modelling approach and
 a tree-based classification algorithm. The ML models are significantly faster than the brute-force approach, but DeepStruc
