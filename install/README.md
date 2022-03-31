@@ -1,3 +1,5 @@
+[ChemRxiv](https://chemrxiv.org/engage/chemrxiv/article-details/6221f17357a9d20c9a729ecb)  |  [Paper] XXX
+
 # Install
 To run DeepStruc you will need some packages, which are dependent on your computer specifications. 
 This includes [PyTorch](https://pytorch.org/) and 
