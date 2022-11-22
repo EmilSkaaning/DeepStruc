@@ -255,7 +255,7 @@ def save_predictions(xyz_pred, df, project_name, model_arch, args):
         yaml.dump(vars(args), outfile, allow_unicode=True, default_flow_style=False)
 
     pbar = tqdm(total=len(df))
-    for idx, row in df.iterrows():
+    for count, (idx, row) in enumerate(df.iterrows()):
         if not os.path.isdir(f'{project_name}/{row["file_name"]}'):
             os.mkdir(f'{project_name}/{row["file_name"]}')
         x = f'{float(row["x"]):+.3f}'.replace('.', '-')
@@ -263,7 +263,7 @@ def save_predictions(xyz_pred, df, project_name, model_arch, args):
 
         save_xyz_file(f'{project_name}/{row["file_name"]}',
                       xyz_pred[idx].detach().cpu().numpy(),
-                      f'{row["file_name"]}ls_{x}_{y}',
+                      f'{row["file_name"]}_{count:05}_ls_{x}_{y}',
                       [model_arch['norm_vals']['x'],model_arch['norm_vals']['y'],model_arch['norm_vals']['z']])
         pbar.update()
     pbar.close()
