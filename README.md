@@ -114,13 +114,14 @@ If you use our code or our results, please consider citing our papers. Thanks in
 @article{D2DD00086E,
 title={DeepStruc: Towards structure solution from pair distribution function data using deep generative models},
 author={Emil T. S. Kjær, Andy S. Anker, Marcus N. Weng, Simon J. L. Billinge, Raghavendra Selvan, Kirsten M. Ø. Jensen},
-journal=Digital Discovery,
+journal={Digital Discovery},
 year={2022}}
 ```
 ```
 @article{anker2020characterising,
 title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
 author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+journal={16th international workshop on mining and learning with graphs under KDD2020 conference}
 year={2020}}
 ```
 
@@ -130,6 +131,7 @@ Our code is developed based on the the following publication:
 @article{anker2020characterising,
 title={Characterising the atomic structure of mono-metallic nanoparticles from x-ray scattering data using conditional generative models},
 author={Anker, Andy Sode and Kjær, Emil TS and Dam, Erik B and Billinge, Simon JL and Jensen, Kirsten MØ and Selvan, Raghavendra},
+journal={16th international workshop on mining and learning with graphs under KDD2020 conference}
 year={2020}}
 ```
 
