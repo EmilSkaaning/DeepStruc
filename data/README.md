@@ -2,7 +2,7 @@
 
 # Data introduction
 This folder contains __graphs__-, __utils__ folder and a gen_data.py script.  
-The __graphs__ folder contains a small set of graph which can be used to varify that DeepStruc is running. To
+The __graphs__ folder contains a small set of graph which can be used to verify that DeepStruc is running correctly. To
 generate a broader distribution of mono-metallic nanoparticles (MMNPs) for training, validation and testing the gen_data.py 
 script is needed.
   
