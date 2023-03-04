@@ -154,15 +154,12 @@ def plot_ls(df, mk_dir, index_highlight):
                    linewidth=0.0, marker='o', zorder=3)
 
     print('\nPlotting DeepStruc training + validation data.')
-    pbar = tqdm(total=len(df_ideal))
-    for idx in range(len(df_ideal)):
-        ax.scatter(df_ideal.iloc[idx]['x'], df_ideal.iloc[idx]['y'],
-                   c=color_dict[df_ideal.iloc[idx]['stru_type']], s=MARKER_SIZE_TR * df_ideal.iloc[idx]['size'],
+    ax.scatter(df_ideal.iloc[:]['x'].values, df_ideal.iloc[:]['y'].values,
+                   #c=color_dict[df_ideal.iloc[:]['stru_type']],
+                   c=[color_dict[str(s)] for s in df_ideal.iloc[:]['stru_type']],
+                   s=MARKER_SIZE_TR * df_ideal.iloc[:]['size'].values,
                    edgecolors='k', linewidth=EDGE_LINEWIDTH_TR,
                    alpha=ALPHA_TR)
-
-        pbar.update()
-    pbar.close()
 
     mlines_list = []
     for key in color_dict.keys():
