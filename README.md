@@ -115,7 +115,7 @@ If you use our code or our results, please consider citing our papers. Thanks in
 title={DeepStruc: Towards structure solution from pair distribution function data using deep generative models},
 author={Emil T. S. Kjær, Andy S. Anker, Marcus N. Weng, Simon J. L. Billinge, Raghavendra Selvan, Kirsten M. Ø. Jensen},
 journal={Digital Discovery},
-year={2022}}
+year={2023}}
 ```
 ```
 @article{anker2020characterising,
