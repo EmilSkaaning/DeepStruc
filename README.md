@@ -5,16 +5,17 @@ Welcome to DeepStruc, a Deep Generative Model (DGM) that learns the relation bet
 thereby solves a structure from a PDF!
 
 1. [DeepStruc](#deepstruc)
-2. [Getting started (with Colab)](#getting-started-with-colab)
-3. [Getting started (own computer)](#getting-started-own-computer)
+2. [DeepStruc App](#deepStruc-app)
+3. [Getting started (with Colab)](#getting-started-with-colab)
+4. [Getting started (own computer)](#getting-started-own-computer)
     1. [Install requirements](#install-requirements)
     2. [Simulate data](#simulate-data)
     3. [Train model](#train-model)
     4. [Predict](#predict)
-4. [Author](#author)
-5. [Cite](#cite)
-6. [Acknowledgments](#Acknowledgments)
-7. [License](#license)  
+5. [Author](#author)
+6. [Cite](#cite)
+7. [Acknowledgments](#Acknowledgments)
+8. [License](#license)  
 
 We here apply DeepStruc for the structural analysis of a model system of mono-metallic nanoparticle (MMNPs) with seven
 different structure types and demonstrate the method for both simulated and experimental PDFs. DeepStruc can reconstruct
@@ -31,11 +32,13 @@ The baseline models can be found in other repositories: [brute-force](https://gi
 [MetalFinder](https://github.com/AndyNano/MetalFinder.git) and [CVAE](https://github.com/AndyNano/CVAE.git).
 ![alt text](img/DeepStruc.png "DeepStruc")
 
+# DeepStruc App
+Using DeepStruc on your own PDFs is straightforward and does not require anything installed or downloaded to your computer.
+Follow the instructions on our [App](https://huggingface.co/spaces/AndySAnker/DeepStruc). 
 
 # Getting started (with Colab)
-Using DeepStruc on your own PDFs is straightforward and does not require anything installed or downloaded to your computer.
 Follow the instructions in our [Colab notebook](https://colab.research.google.com/github/EmilSkaaning/DeepStruc/blob/main/DeepStruc.ipynb)
-and try to play around. 
+and try to play around. The Colab offers a bit more flexibility than our App.
 
 # Getting started (own computer)
 Follow these step if you want to train DeepStruc and predict with DeepStruc locally on your own computer.
